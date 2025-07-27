@@ -1,4 +1,10 @@
 pandas
 numpy
 seaborn
+python-box
+ensure
+tqdm
+pyYAML
+joblib
+types-PyYAML
 -e .
