@@ -1,5 +1,5 @@
 from src.logger import logger
-from src.pipeline.train_pipeline import DataIngestionPipeline
+from src.pipeline.train_pipeline import DataIngestionPipeline, DataTransformationPipeline
 
 logger.info("Logging Setup Completed Successfully")
 
@@ -16,3 +16,19 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+
+# ==================================== Data Transformation ====================================
+STAGE_NAME = "Data Transformation Stage"
+
+try:
+    logger.info(f"------------ Stage [{STAGE_NAME}] Started ------------")
+    obj = DataTransformationPipeline()
+    obj.initiate_data_transformation()
+    logger.info(f"------------ Stage [{STAGE_NAME}] Completed ------------")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+

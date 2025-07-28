@@ -3,3 +3,11 @@ artifacts_root: artifacts
 data_ingestion:
   root_dir: artifacts/data_ingestion
   local_data_file_path: data/StudentsPerformance.csv
+  Status_file: artifacts/data_ingestion/status.txt
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_filepath: data/StudentsPerformance.csv
+  cleaned_data_filepath: artifacts/data_transformation/cleaned_data.csv
+  train_data_filepath: artifacts/data_transformation/train.csv
+  test_data_filepath: artifacts/data_transformation/test.csv

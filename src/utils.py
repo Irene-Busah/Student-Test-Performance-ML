@@ -26,7 +26,7 @@ def read_yaml(filepath: Path) -> ConfigBox:
         with open(filepath) as file:
             content = yaml.safe_load(file)
 
-            logger.info(f"Successfully Loaded the YAML file: {file}")
+            logger.info(f"Successfully Loaded the YAML file: {file.name}")
 
             return ConfigBox(content)
     except BoxValueError:

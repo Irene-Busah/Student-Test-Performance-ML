@@ -6,9 +6,9 @@ Configs the entities of the pipeline
 """
 
 # libraries
-from src.logger import logger
+# from src.logger import logger
 from src.utils import create_directories, read_yaml
-from src.entity import DataIngestionConfig
+from src.entity import DataIngestionConfig, DataTransformationConfig
 from pathlib import Path
 from box import ConfigBox
 
@@ -34,7 +34,25 @@ class ConfigurationManager:
 
         data_ingestion_config = DataIngestionConfig (
             root_dir=config.root_dir,
-            local_data_file_path=config.local_data_file_path
+            local_data_file_path=config.local_data_file_path,
+            Status_file=config.Status_file
         )
 
         return data_ingestion_config
+
+
+    def get_data_transformation_config(self) -> ConfigBox:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig (
+            root_dir=config.root_dir,
+            data_filepath=config.data_filepath,
+            cleaned_data_filepath=config.cleaned_data_filepath,
+            train_data_filepath=config.train_data_filepath,
+            test_data_filepath=config.test_data_filepath
+        )
+
+        return data_transformation_config
+

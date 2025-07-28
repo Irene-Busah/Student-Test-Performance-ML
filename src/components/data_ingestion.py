@@ -10,6 +10,7 @@ Implements the data ingestion components
 from src.logger import logger
 from src.entity import DataIngestionConfig
 import pandas as pd
+import io
 
 
 class DataIngestion:
@@ -22,5 +23,15 @@ class DataIngestion:
 
         logger.info(f"Loading the Data from the local directory")
 
-        logger.info(data.shape)
+        # Capture DataFrame info as a string
+        buffer = io.StringIO()
+        data.info(buf=buffer)
+        info_str = buffer.getvalue()
+        buffer.close()
+
+        with open(self.config.Status_file, 'w') as file:
+            file.write(f"Data Shape: {data.shape}\n")
+            file.write(info_str)
+
+        logger.info(f"Data Summary Saved Successfully")
 
