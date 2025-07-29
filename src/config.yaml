@@ -11,3 +11,9 @@ data_transformation:
   cleaned_data_filepath: artifacts/data_transformation/cleaned_data.csv
   train_data_filepath: artifacts/data_transformation/train.csv
   test_data_filepath: artifacts/data_transformation/test.csv
+
+model_training:
+  root_dir: artifacts/model_training
+  train_data_filepath: artifacts/data_transformation/train.csv
+  test_data_filepath: artifacts/data_transformation/test.csv
+  model_name: model.joblib

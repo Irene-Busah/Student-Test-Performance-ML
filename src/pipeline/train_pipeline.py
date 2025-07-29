@@ -9,6 +9,7 @@ Implements the machine learning pipelines
 # libraries
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import DataTransformation
+from src.components.model_training import ModelTraining
 
 from src.config import ConfigurationManager
 from src.logger import logger
@@ -39,4 +40,17 @@ class DataTransformationPipeline:
         data_transform.rename_data_columns()
         data_transform.encode_categorical_columns()
         data_transform.splitting_data()
+
+
+class ModelTrainingPipeline:
+    def __init__(self):
+        pass
+
+    def initiate_model_training(self):
+        config = ConfigurationManager()
+
+        model_training_config = config.get_model_training_config()
+        model_training = ModelTraining(config=model_training_config)
+
+        model_training.train_model()
 

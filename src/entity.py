@@ -24,3 +24,17 @@ class DataTransformationConfig:
     cleaned_data_filepath: Path
     train_data_filepath: Path
     test_data_filepath: Path
+
+@dataclass
+class ModelTrainingConfig:
+    root_dir: Path
+    train_data_filepath: Path
+    test_data_filepath: Path
+    model_name: Path
+    alpha: float
+    l1_ratio: float
+    fit_intercept: bool
+    max_iter: int
+    selection: str
+    random_state: int
+    target_column: str

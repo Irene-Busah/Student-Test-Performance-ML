@@ -1,5 +1,5 @@
 from src.logger import logger
-from src.pipeline.train_pipeline import DataIngestionPipeline, DataTransformationPipeline
+from src.pipeline.train_pipeline import DataIngestionPipeline, DataTransformationPipeline, ModelTrainingPipeline
 
 logger.info("Logging Setup Completed Successfully")
 
@@ -32,3 +32,16 @@ except Exception as e:
     raise e
 
 
+
+# ==================================== Model Training ====================================
+STAGE_NAME = "Model Training Stage"
+
+try:
+    logger.info(f"------------ Stage [{STAGE_NAME}] Started ------------")
+    obj = ModelTrainingPipeline()
+    obj.initiate_model_training()
+    logger.info(f"------------ Stage [{STAGE_NAME}] Completed ------------")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
