@@ -8,7 +8,8 @@ Configs the entities of the pipeline
 # libraries
 # from src.logger import logger
 from src.utils import create_directories, read_yaml
-from src.entity import DataIngestionConfig, DataTransformationConfig, ModelTrainingConfig
+from src.entity import DataIngestionConfig, DataTransformationConfig, ModelTrainingConfig, ModelEvaluationConfig
+
 from pathlib import Path
 from box import ConfigBox
 
@@ -80,4 +81,25 @@ class ConfigurationManager:
         )
 
         return model_training_config
+    
+
+    def get_model_evaluation_config(self) -> ConfigBox:
+        config = self.config.model_evaluation
+        schema = self.schema.TARGET_COLUMN
+        params = self.param.elastic_net
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_filepath=config.test_data_filepath,
+            model_name=config.model_name,
+            all_params=params,
+            metrics_filename=config.metrics_filename,
+            target_column=schema.name,
+            mflow_uri=config.mlflow_uri
+        )
+
+        return model_evaluation_config
+
 

@@ -38,3 +38,13 @@ class ModelTrainingConfig:
     selection: str
     random_state: int
     target_column: str
+
+@dataclass
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_filepath: Path
+    model_name: Path
+    all_params: dict
+    metrics_filename: Path
+    target_column: str
+    mflow_uri: Path
